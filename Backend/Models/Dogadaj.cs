@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-/// <summary>
-/// Predstavlja entitet događaja koji je povezan s određenim lokalom.
-/// Sadrži informacije o nazivu, opisu i vremenu održavanja (timestamp).
-/// Implementira One-to-Many relaciju prema entitetu Lokal.
-
 namespace PulsGrada.Models
 {
+    /// <summary>
+    /// Predstavlja entitet događaja koji je povezan s određenim lokalom.
+    /// Sadrži informacije o nazivu, opisu i vremenu održavanja (timestamp).
+    /// Implementira One-to-Many relaciju prema entitetu Lokal.
     [Table ("dogadaji")]
     public class Dogadaj
     {
@@ -30,6 +29,6 @@ namespace PulsGrada.Models
         public string Opis { get; set; } = string.Empty;
 
         [Column("url_slike")]
-        public int UrlSlike { get; set; }
+        public string UrlSlike { get; set; } = string.Empty;
     }
 }

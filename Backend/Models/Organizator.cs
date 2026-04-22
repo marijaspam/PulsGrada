@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-/// <summary>
-/// Predstavlja entitet organizatora događanja (npr. udruga, agencija ili tvrtka).
-/// Sadrži podatke o nazivu, kontakt informacijama i povezanim događajima.
-/// Mapira se na tablicu 'organizatori' u PostgreSQL bazi podataka.
-/// </summary>
 namespace PulsGrada.Models
 {
+    /// <summary>
+    /// Predstavlja entitet organizatora događanja (npr. udruga, agencija ili tvrtka).
+    /// Sadrži podatke o nazivu, kontakt informacijama i povezanim događajima.
+    /// Mapira se na tablicu 'organizatori' u PostgreSQL bazi podataka.
+    /// </summary>
     [Table("organizatori")]
     public class Organizator
     {

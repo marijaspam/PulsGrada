@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-/// <summary>
-/// Predstavlja osnovni entitet ugostiteljskog objekta.
-/// Sadrži detaljne informacije o lokalu, njegovim značajkama i pravilima.
-/// Mapira se na tablicu 'lokali' u PostgreSQL bazi podataka.
-/// </summary>
-
 namespace PulsGrada.Models
 {
+    /// <summary>
+    /// Predstavlja osnovni entitet ugostiteljskog objekta.
+    /// Sadrži detaljne informacije o lokalu, njegovim značajkama i pravilima.
+    /// Mapira se na tablicu 'lokali' u PostgreSQL bazi podataka.
+    /// </summary>
     [Table("lokali")]
     public class Lokal
     {
