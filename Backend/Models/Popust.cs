@@ -18,7 +18,7 @@ namespace PulsGrada.Models
         public int KorisnikId { get; set; }
 
         [Column("naslov")]
-        public String Naslov { get; set; } = string.Empty;
+        public string Naslov { get; set; } = string.Empty;
 
         [Column("opis_popusta")]
         public string OpisPopusta { get; set; } = string.Empty;
