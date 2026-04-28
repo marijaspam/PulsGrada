@@ -17,11 +17,11 @@ namespace PulsGrada.Models
         [Column("adresa")]
         public string Adresa { get; set; } = string.Empty;
 
-        /*[Column("lokacija")]
+        [Column("lokacija")]
         public double KordinataX { get; set; }
 
         [Column("lokacija")]
-        public double KordinataY { get; set; }*/
+        public double KordinataY { get; set; }
 
         [Column("radno_vrijeme")]
         public string RadnoVrijeme { get; set; } = string.Empty;

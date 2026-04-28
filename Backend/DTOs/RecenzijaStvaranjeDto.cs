@@ -7,6 +7,8 @@ namespace PulsGrada.DTOs
         [Required]
         public int LokalId { get; set; }
 
+        public string Korisnickoime { get; set; } = string.Empty;
+
         [Required]
         [Range(1,5)]
         public int Ocjena { get; set; }
