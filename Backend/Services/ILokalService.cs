@@ -5,15 +5,14 @@ namespace PulsGrada.Services
     public interface ILokalService
     {
         List<LokalInfoDto> DohvatiSveLokale();
-        LokalInfoDto DohvatiPojediniLokal(int Id); 
-        List<LokalInfoDto> PretraziLokale(string UneseniPojam);
-        List<LokalInfoDto> DohvatiPremiumLokale(bool Premium);
+        LokalInfoDto? DohvatiPojediniLokal(int id); 
+        List<LokalInfoDto> PretraziLokale(string uneseniPojam);
+        List<LokalInfoDto> DohvatiPremiumLokale();
         List<LokalInfoDto> FilterLokala(
-            string? Lokacija,
-            bool? ImaPusenje, 
-            bool? ImaBiljar,
-            bool? ImaPikado,
-            int? MinOcjena);
+            string? lokacija,
+            bool? imaPusenje, 
+            bool? imaBiljar,
+            bool? imaPikado);
 
     }
 }

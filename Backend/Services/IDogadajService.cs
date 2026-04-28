@@ -5,16 +5,13 @@ namespace PulsGrada.Services
     public interface IDogadajService
     {
         List<DogadajInfoDto> DohvatiSveDogadaje();
-        DogadajInfoDto DohvatiPojediniDogadaj(int Id);
-        List<DogadajInfoDto> DohvatiDogadajeULokalu(int IdLokala);
-        List<DogadajInfoDto> PretraziDogadaje(string UneseniPojam);
-        List<DogadajInfoDto> DohvatiPremiumDogadaj(bool Premium);
+        DogadajInfoDto? DohvatiPojediniDogadaj(int id);
+        List<DogadajInfoDto> DohvatiDogadajeULokalu(int idLokala);
+        List<DogadajInfoDto> PretraziDogadaje(string uneseniPojam);
         List<DogadajInfoDto> FiltrirajDogadaje(
-            string? Naziv,
-            string? Kategorija,
-            DateTime? VrijemePocetka
+            string? naziv,
+            string? kategorija,
+            DateTime? vrijemePocetka
             );
-
-
     }
 }

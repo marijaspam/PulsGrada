@@ -4,7 +4,7 @@ namespace PulsGrada.Services
 {
     public interface IRecenzijaService
     {
-        List<RecenzijaPrikaz> DohvatiSveRecenzije(int IdLokal);
-        bool DodajRecenziju(RecenzijaStvaranjeDto NovaRecenzija);
+        List<RecenzijaPrikaz> DohvatiSveRecenzije(int idLokal);
+        bool DodajRecenziju(RecenzijaStvaranjeDto novaRecenzija);
     }
 }

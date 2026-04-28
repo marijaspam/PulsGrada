@@ -5,9 +5,9 @@ namespace PulsGrada.DTOs
     public class RecenzijaStvaranjeDto
     {
         [Required]
-        public int LokalId { get; set; }
+        public int IdLokal { get; set; }
 
-        public string Korisnickoime { get; set; } = string.Empty;
+        public string KorisnickoIme { get; set; } = string.Empty;
 
         [Required]
         [Range(1,5)]

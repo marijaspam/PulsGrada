@@ -4,6 +4,6 @@ namespace PulsGrada.Services
 {
     public interface IKategorijaService
     {
-        List<KategorijaDto> DohvatiSveKategorije();
+        List<string> DohvatiSveKategorije();
     }
 }
