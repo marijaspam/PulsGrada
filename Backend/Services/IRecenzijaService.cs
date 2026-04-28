@@ -6,5 +6,6 @@ namespace PulsGrada.Services
     {
         List<RecenzijaPrikaz> DohvatiSveRecenzije(int idLokal);
         bool DodajRecenziju(RecenzijaStvaranjeDto novaRecenzija);
+        bool ObrisiRecenziju(int id);
     }
 }
