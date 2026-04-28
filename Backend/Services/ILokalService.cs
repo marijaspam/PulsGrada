@@ -12,7 +12,8 @@ namespace PulsGrada.Services
             string? lokacija,
             bool? imaPusenje, 
             bool? imaBiljar,
-            bool? imaPikado);
+            bool? imaPikado,
+            int? idKvart);
 
     }
 }

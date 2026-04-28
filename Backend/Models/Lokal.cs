@@ -11,6 +11,9 @@ namespace PulsGrada.Models
     {
         public int Id { get; set; }
 
+        [Column("kvart_id")]
+        public int Kvart { get; set; }
+
         [Column("naziv")]
         public string Naziv { get; set; } = string.Empty;
 

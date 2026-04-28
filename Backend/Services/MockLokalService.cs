@@ -1,4 +1,5 @@
 ﻿using PulsGrada.DTOs;
+using PulsGrada.Models;
 
 namespace PulsGrada.Services
 {
@@ -31,7 +32,8 @@ namespace PulsGrada.Services
             string? lokacija,
             bool? imaPusenje,
             bool? imaBiljar,
-            bool? imaPikado)
+            bool? imaPikado,
+            int? idKvart)
         {
             List<LokalInfoDto> lokali = MockDataStore.Lokali;
 
@@ -39,17 +41,21 @@ namespace PulsGrada.Services
             {
                 lokali = lokali.Where(l => l.Adresa.Contains(lokacija, StringComparison.OrdinalIgnoreCase)).ToList();
             }
-            if(imaPusenje != null)
+            if(imaPusenje.HasValue)
             {
                 lokali = lokali.Where(l => l.ImaPusenje == true).ToList();
             }
-            if (imaBiljar != null)
+            if (imaBiljar.HasValue)
             {
                 lokali = lokali.Where(l => l.ImaBiljar == true).ToList();
             }
-            if (imaPikado != null)
+            if (imaPikado.HasValue)
             {
                 lokali = lokali.Where(l => l.ImaPikado == true).ToList();
+            }
+            if (idKvart.HasValue)
+            {
+                lokali = lokali.Where(l => l.IdKvart == idKvart.Value).ToList();
             }
             return lokali;
         }

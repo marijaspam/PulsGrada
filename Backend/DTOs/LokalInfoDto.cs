@@ -3,6 +3,8 @@
     public class LokalInfoDto
     {
         public int Id { get; set; }
+        public string KvartNaziv { get; set; } = string.Empty;
+        public int IdKvart { get; set; }
         public string Naziv { get; set; } = string.Empty;
         public string Adresa { get; set; } = string.Empty;
         public double KordinataX { get; set; }
