@@ -14,7 +14,7 @@ namespace PulsGrada.Controllers
         {
             _authService = authService;
         }
-        [HttpGet("prijava")]
+        [HttpPost("prijava")]
         public IActionResult Prijava([FromBody]PrijavaKorisnikaDto podaciPrijave)
         {
             var korisnik = _authService.Prijava(podaciPrijave);

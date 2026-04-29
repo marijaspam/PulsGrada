@@ -13,6 +13,7 @@ builder.Services.AddSingleton<IDogadajService, MockDogadajService>();
 builder.Services.AddSingleton<IRecenzijaService, MockRecenzijaService>();
 builder.Services.AddSingleton<IKategorijaService, MockKategorijaService>();
 builder.Services.AddSingleton<IAuthService, MockAuthService>();
+builder.Services.AddSingleton<IFavoritService, MockFavoritService>();
 
 
 var app = builder.Build();

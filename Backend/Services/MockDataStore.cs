@@ -118,5 +118,11 @@ namespace PulsGrada.Services
             DatumRegistracije = DateTime.Now.AddDays(-10)
         }
     };
+        public static List<Favorit> Favoriti = new List<Favorit>
+        {
+            new Favorit { KorisnikId = 1, LokalId = 1 }, 
+            new Favorit { KorisnikId = 1, LokalId = 3 }, 
+            new Favorit { KorisnikId = 2, LokalId = 2 } 
+        };
     }
 }

@@ -33,6 +33,7 @@ namespace PulsGrada.Services
                 Lozinka = podaciRegistracija.Lozinka,
                 DatumRegistracije =DateTime.Now
             };
+            MockDataStore.Korisnici.Add(noviKorisnik);
 
             return "Registracija uspješna";
         }
