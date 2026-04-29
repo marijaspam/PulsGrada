@@ -3,7 +3,7 @@ using PulsGrada.Models;
 
 namespace PulsGrada.Services
 {
-    public class MockAuthService
+    public class MockAuthService:IAuthService
     {
         public Korisnik? Prijava(PrijavaKorisnikaDto podaciPrijave)
         {
@@ -13,7 +13,7 @@ namespace PulsGrada.Services
             k.Lozinka == podaciPrijave.Lozinka
             );
         }
-        public string Registacija(RegistracijaDto podaciRegistracija)
+        public string Registracija(RegistracijaDto podaciRegistracija)
         {
             if(MockDataStore.Korisnici.Any(k=>k.Email.Equals(podaciRegistracija.Email)))
             {
