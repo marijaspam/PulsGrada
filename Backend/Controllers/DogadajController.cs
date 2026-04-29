@@ -28,5 +28,19 @@ namespace PulsGrada.Controllers
             }
             return Ok(dogadaj);
         }
+        [HttpGet("filter")]
+        public IActionResult FiltrirajDogadaje(
+            [FromQuery] string? naziv,
+            [FromQuery] string? kategorija,
+            [FromQuery] DateTime? vrijeme
+            )
+        {
+            var rezultatiDogadaji = _dogadajService.FiltrirajDogadaje(naziv, kategorija, vrijeme);
+            if(rezultatiDogadaji == null)
+            {
+                return NotFound(new { poruka = "Nije pronaden takav dogadaj" });
+            }
+            return Ok(rezultatiDogadaji);
+        }
     }
 }

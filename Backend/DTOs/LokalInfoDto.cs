@@ -17,6 +17,6 @@
         public string UrlCjenik { get; set; } = string.Empty;
         public double ProsjecnaOcjena { get; set; }
         public int BrojRecenzija { get; set; }
-        public bool IsPremuim { get; set; }
+        public bool IsPremium { get; set; }
     }
 }

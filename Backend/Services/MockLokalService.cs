@@ -26,10 +26,10 @@ namespace PulsGrada.Services
         }
         public List<LokalInfoDto> DohvatiPremiumLokale()
         {
-            return MockDataStore.Lokali.Where(l => l.IsPremuim == true).ToList();
+            return MockDataStore.Lokali.Where(l => l.IsPremium == true).ToList();
         }
         public List<LokalInfoDto> FilterLokala(
-            string? lokacija,
+            string? adresa,
             bool? imaPusenje,
             bool? imaBiljar,
             bool? imaPikado,
@@ -37,19 +37,19 @@ namespace PulsGrada.Services
         {
             List<LokalInfoDto> lokali = MockDataStore.Lokali;
 
-            if (!string.IsNullOrWhiteSpace(lokacija))
+            if (!string.IsNullOrWhiteSpace(adresa))
             {
-                lokali = lokali.Where(l => l.Adresa.Contains(lokacija, StringComparison.OrdinalIgnoreCase)).ToList();
+                lokali = lokali.Where(l => l.Adresa.Contains(adresa, StringComparison.OrdinalIgnoreCase)).ToList();
             }
-            if(imaPusenje.HasValue)
+            if(imaPusenje == true)
             {
                 lokali = lokali.Where(l => l.ImaPusenje == true).ToList();
             }
-            if (imaBiljar.HasValue)
+            if (imaBiljar == true)
             {
                 lokali = lokali.Where(l => l.ImaBiljar == true).ToList();
             }
-            if (imaPikado.HasValue)
+            if (imaPikado == true)
             {
                 lokali = lokali.Where(l => l.ImaPikado == true).ToList();
             }

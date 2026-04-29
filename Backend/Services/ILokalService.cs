@@ -9,7 +9,7 @@ namespace PulsGrada.Services
         List<LokalInfoDto> PretraziLokale(string uneseniPojam);
         List<LokalInfoDto> DohvatiPremiumLokale();
         List<LokalInfoDto> FilterLokala(
-            string? lokacija,
+            string? adresa,
             bool? imaPusenje, 
             bool? imaBiljar,
             bool? imaPikado,
