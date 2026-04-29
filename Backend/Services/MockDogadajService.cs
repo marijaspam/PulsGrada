@@ -49,9 +49,9 @@ namespace PulsGrada.Services
             }
             if(!string.IsNullOrWhiteSpace(kategorija))
             {
-                dogadaji = dogadaji.Where(d => d.KategorijaNaziv == kategorija).ToList();
+                dogadaji = dogadaji.Where(d => d.KategorijaNaziv.Contains(kategorija, StringComparison.OrdinalIgnoreCase)).ToList();
             }
-            if(vrijemePocetka != null)
+            if(vrijemePocetka.HasValue)
             {
                 dogadaji = dogadaji.Where(d => d.VrijemePocetka.Date == vrijemePocetka.Value.Date).ToList();
             }

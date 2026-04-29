@@ -3,7 +3,7 @@ using PulsGrada.Services;
 namespace PulsGrada.Controllers
 {
     [ApiController]
-    [Route("api/controller")]
+    [Route("api/[controller]")]
     public class DogadajController :ControllerBase
     {
         private readonly IDogadajService _dogadajService;
@@ -17,7 +17,7 @@ namespace PulsGrada.Controllers
             var dogadaji = _dogadajService.DohvatiSveDogadaje();
             return Ok(dogadaji);
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult DohavtiDogadajPoId(int id)
         {
             var dogadaj = _dogadajService.DohvatiPojediniDogadaj(id);
@@ -41,6 +41,16 @@ namespace PulsGrada.Controllers
                 return NotFound(new { poruka = "Nije pronaden takav dogadaj" });
             }
             return Ok(rezultatiDogadaji);
+        }
+        [HttpGet("pretraga")]
+        public IActionResult PretragaDogadaja([FromQuery] string uneseniPojam)
+        {
+            var rezultatiPretrage = _dogadajService.PretraziDogadaje(uneseniPojam);
+            if(rezultatiPretrage == null || !rezultatiPretrage.Any())
+            {
+                return NotFound(new { poruka = "Nema rezultata za vašu pretragu." });
+            }
+            return Ok(rezultatiPretrage);
         }
     }
 }

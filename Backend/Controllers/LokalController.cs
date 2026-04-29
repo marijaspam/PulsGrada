@@ -47,5 +47,15 @@ namespace PulsGrada.Controllers
             }
             return Ok(rezultatiLokali);
         }
+        [HttpGet("pretraga")]
+        public IActionResult PretragaDogadaja([FromQuery] string uneseniPojam)
+        {
+            var rezultatiPretrage = _lokalService.PretraziLokale(uneseniPojam);
+            if (rezultatiPretrage == null || !rezultatiPretrage.Any())
+            {
+                return NotFound(new { poruka = "Nema rezultata za vašu pretragu." });
+            }
+            return Ok(rezultatiPretrage);
+        }
     }
 }

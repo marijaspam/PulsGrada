@@ -1,4 +1,5 @@
 ﻿using PulsGrada.DTOs;
+using PulsGrada.Models;
 
 namespace PulsGrada.Services
 {
@@ -94,5 +95,28 @@ namespace PulsGrada.Services
             new RecenzijaPrikaz { IdLokal = 1, KorisnickoIme = "Ana", Ocjena = 5, Komentar = "Super!", DatumObjave = DateTime.Now },
             new RecenzijaPrikaz { IdLokal = 2, KorisnickoIme = "Marko", Ocjena = 4, Komentar = "Dobro je.", DatumObjave = DateTime.Now }
         };
-    } 
+        public static List<Korisnik> Korisnici = new List<Korisnik>
+    {
+        new Korisnik
+        {
+            Id = 1,
+            KorisnickoIme = "testko",
+            Ime = "Test",
+            Prezime = "Korisnik",
+            Email = "test@pulsgrada.hr",
+            Lozinka = "12345678",
+            DatumRegistracije = DateTime.Now.AddMonths(-2)
+        },
+        new Korisnik
+        {
+            Id = 2,
+            KorisnickoIme = "admin",
+            Ime = "Glavni",
+            Prezime = "Administrator",
+            Email = "admin@pulsgrada.hr",
+            Lozinka = "admin123",
+            DatumRegistracije = DateTime.Now.AddDays(-10)
+        }
+    };
+    }
 }
