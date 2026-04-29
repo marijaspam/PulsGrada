@@ -33,7 +33,8 @@ CREATE TABLE lokali (
     ima_biljar BOOLEAN DEFAULT false,
     ima_pikado BOOLEAN DEFAULT false,
     url_cjenik TEXT,
-    is_premium BOOLEAN DEFAULT false
+    is_premium BOOLEAN DEFAULT false,
+    url_slika VARCHAR(500) DEFAULT ''
 );
 
 -- 5. ORGANIZATORI

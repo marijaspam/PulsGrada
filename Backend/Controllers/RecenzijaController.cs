@@ -18,7 +18,7 @@ namespace PulsGrada.Controllers
         [HttpGet("{id}")]
         public IActionResult DohvatiSveRecenzije(int id)
         {
-            var recenzije = _recenzijaService.DohvatiSveRecenzije(id);
+            var recenzije = _recenzijaService.DohvatiRecenzijeZaLokal(id);
 
             if (recenzije == null)
             {

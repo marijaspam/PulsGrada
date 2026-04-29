@@ -11,8 +11,8 @@ namespace PulsGrada.Models
     {
         public int Id { get; set; }
 
-        [Column("kvart_id")]
-        public int Kvart { get; set; }
+        [ForeignKey("kvart_id")]
+        public int KvartId { get; set; }
 
         [Column("naziv")]
         public string Naziv { get; set; } = string.Empty;
@@ -46,5 +46,9 @@ namespace PulsGrada.Models
 
         [Column("is_premium")]
         public bool IsPremium { get; set; }
+
+        [Column("url_slike")]
+        public string UrlSlike { get; set; } = string.Empty;
+
     }
 }

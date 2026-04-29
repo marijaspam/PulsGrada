@@ -11,10 +11,10 @@ namespace PulsGrada.Models
     {
         public int Id { get; set; }
 
-        [Column("lokal_id")]
+        [ForeignKey("lokal_id")]
         public int LokalId { get; set; }
 
-        [Column("korisnik_id")]
+        [ForeignKey("korisnik_id")]
         public int KorisnikId { get; set; }
 
         [Column("naslov")]

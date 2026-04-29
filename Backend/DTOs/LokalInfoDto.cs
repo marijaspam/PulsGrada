@@ -1,4 +1,6 @@
-﻿namespace PulsGrada.DTOs
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PulsGrada.DTOs
 {
     public class LokalInfoDto
     {
@@ -18,5 +20,6 @@
         public double ProsjecnaOcjena { get; set; }
         public int BrojRecenzija { get; set; }
         public bool IsPremium { get; set; }
+        public string UrlSlike { get; set; } = string.Empty;
     }
 }
