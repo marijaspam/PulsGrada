@@ -6,11 +6,11 @@ using PulsGrada.Services;
 namespace PulsGrada.Controllers
 {
     [ApiController]
-    [Route("api/[conroller]")]
-    public class AuthContoller :ControllerBase
+    [Route("api/[controller]")]
+    public class AuthController :ControllerBase
     {
         private readonly IAuthService _authService;
-        public AuthContoller(IAuthService authService)
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
