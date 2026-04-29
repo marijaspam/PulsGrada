@@ -1,0 +1,76 @@
+.prijava-stranica {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.prijava-box {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+}
+
+.input-grupa {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-grupa label {
+  font-size: 1.2rem;
+}
+
+.input-grupa input {
+  background: rgba(255, 255, 255, 0.3); /* Prozirno sivo-plava kao na slici */
+  border: none;
+  padding: 15px 25px;
+  border-radius: 30px;
+  color: white;
+  outline: none;
+  font-size: 1rem;
+}
+
+.input-grupa input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-prijavi {
+  background-color: #ff4d6d; /* Tvoja prepoznatljiva roza */
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-prijavi:hover {
+  background-color: #ff758f;
+  transform: scale(1.05);
+}
+
+/* Ovo cilja Link koji ima klasu prijava-btn */
+.prijava-btn {
+  text-decoration: none; /* Miče podcrtavanje */
+  color: white;          /* Force-aj bijelu boju */
+  background-color: #ff4d6d; /* Tvoja roza boja */
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block; /* Da padding radi kako treba na linku */
+  transition: 0.3s;
+}
+
+.prijava-btn:hover {
+  background-color: #ff758f;
+  color: white; /* Da ne poplavi ni kad prođeš mišem */
+  transform: scale(1.05);
+}
