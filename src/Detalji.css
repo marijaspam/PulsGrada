@@ -1,0 +1,129 @@
+.detalji-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: white;
+  font-family: sans-serif;
+}
+
+/* Gornji dio - Info i Slika */
+.detalji-header {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.detalji-info-lijevo {
+  flex: 1;
+}
+
+.detalji-info-lijevo h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.ocjena-broj {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin-left: 15px;
+}
+
+.info-lista {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.info-lista li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.9;
+}
+
+.glavna-slika-desno {
+  flex: 1;
+}
+
+.glavna-slika-desno img {
+  width: 100%;
+  border-radius: 40px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Gumbi */
+.akcija-sekcija {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.btn-omiljeno {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-omiljeno:hover {
+  background: #ff758f;
+  transform: scale(1.05);
+}
+
+/* Sekcija s opisom/recenzijama */
+.opis-box, .recenzija-kartica {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 30px;
+  margin-top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recenzija-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Galerija */
+.galerija-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.galerija-slika {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.mapa-kontejner {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.mapa-kontejner h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.mapa-kontejner iframe {
+  filter: grayscale(20%) invert(5%) contrast(90%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
