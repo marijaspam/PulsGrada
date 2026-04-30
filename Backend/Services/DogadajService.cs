@@ -1,7 +1,7 @@
 ﻿using PulsGrada.DTOs;
 using PulsGrada.Models;
 using PulsGrada.Repositories;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace PulsGrada.Services
 {
@@ -16,7 +16,6 @@ namespace PulsGrada.Services
 
         public List<DogadajInfoDto> DohvatiSveDogadaje()
         {
-            // Dohvaćamo modele iz baze i mapiramo ih u DTO listu
             return _dogadajRepo.DohvatiSveDogadaje()
                 .Select(d => MapirajUInfoDto(d))
                 .ToList();
@@ -30,7 +29,6 @@ namespace PulsGrada.Services
 
         public List<DogadajInfoDto> DohvatiDogadajeULokalu(int idLokala)
         {
-            // Filtriramo na temelju stranog ključa LokalId
             return _dogadajRepo.DohvatiSveDogadaje()
                 .Where(d => d.LokalId == idLokala)
                 .Select(d => MapirajUInfoDto(d))
@@ -42,7 +40,6 @@ namespace PulsGrada.Services
             if (string.IsNullOrWhiteSpace(uneseniPojam))
                 return new List<DogadajInfoDto>();
 
-            // Koristimo metodu iz repozitorija za pretragu po nazivu ili opisu
             return _dogadajRepo.PretraziDogadaje(uneseniPojam)
                 .Select(d => MapirajUInfoDto(d))
                 .ToList();
@@ -50,7 +47,6 @@ namespace PulsGrada.Services
 
         public List<DogadajInfoDto> FiltrirajDogadaje(string? naziv, string? kategorija, DateTime? vrijemePocetka)
         {
-            // Pretvaramo u AsQueryable kako bismo mogli dinamički slagati filtere
             var dogadajiQuery = _dogadajRepo.DohvatiSveDogadaje().AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(naziv))
@@ -60,14 +56,12 @@ namespace PulsGrada.Services
 
             if (!string.IsNullOrWhiteSpace(kategorija))
             {
-                // Dodaj .Naziv nakon d.Kategorija
                 dogadajiQuery = dogadajiQuery.Where(d => d.Kategorija != null &&
                                 d.Kategorija.Naziv.Contains(kategorija, StringComparison.OrdinalIgnoreCase));
             }
 
             if (vrijemePocetka.HasValue)
             {
-                // Filtriranje po datumu (zanemarujemo sate/minute)
                 dogadajiQuery = dogadajiQuery.Where(d => d.VrijemePocetka.Date == vrijemePocetka.Value.Date);
             }
 
@@ -86,17 +80,12 @@ namespace PulsGrada.Services
                 Opis = d.Opis ?? "Nema opisa",
                 VrijemePocetka = d.VrijemePocetka,
 
-                // OVDJE JE BIO PROBLEM:
-                // d.Lokal je objekt, moraš dodati .Naziv da dobiješ string
                 LokalNaziv = d.Lokal?.Naziv ?? "Nepoznat lokal",
 
-                // d.Kategorija je objekt, moraš dodati .Naziv
                 KategorijaNaziv = d.Kategorija?.Naziv ?? "Ostalo",
 
-                // d.Organizator je objekt, moraš dodati .Naziv
-                OrganizatorNaziv = d.Organizator?.Naziv ?? "Puls Grada",
+                OrganizatorNaziv = d.Organizator?.Naziv ?? "Nepoznat organizator",
 
-                // Pazi na naziv polja: u modelu je UrlSlike
                 UrlSlike = d.UrlSlike ?? "default-image.jpg"
             };
         }

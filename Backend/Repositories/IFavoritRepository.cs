@@ -1,11 +1,9 @@
 ﻿using PulsGrada.Models;
 
-namespace PulsGrada.Repositories
+public interface IFavoritRepository
 {
-    public interface IFavoritRepository
-    {
-        public List<Lokal> DohvatiFavoriteKorisnika(int idkorisnik);
-        public bool DodajFavorit(Favorit favorit);
-        public bool ObrisiFavorit(Favorit favorit);
-    }
+    List<Favorit> DohvatiFavoriteKorisnika(int idKorisnika);
+    Favorit? DohvatiFavorit(int idKorisnika, int idLokala);
+    bool DodajFavorit(Favorit favorit);
+    bool ObrisiFavorit(Favorit favorit);
 }

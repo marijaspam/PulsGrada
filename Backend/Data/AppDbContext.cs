@@ -14,6 +14,7 @@ namespace PulsGrada.Data
         public DbSet<Dogadaj> Dogadaji { get; set; }
         public DbSet<Kvart> Kvartovi { get; set; }
         public DbSet<Recenzija> Recenzije { get; set; }
+        public DbSet<Kategorija> Kategorije { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

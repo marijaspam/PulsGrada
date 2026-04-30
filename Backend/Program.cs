@@ -8,12 +8,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ILokalService, MockLokalService>();
-builder.Services.AddSingleton<IDogadajService, MockDogadajService>();
-builder.Services.AddSingleton<IRecenzijaService, MockRecenzijaService>();
-builder.Services.AddSingleton<IKategorijaService, MockKategorijaService>();
-builder.Services.AddSingleton<IAuthService, MockAuthService>();
-builder.Services.AddSingleton<IFavoritService, MockFavoritService>();
 
 
 var app = builder.Build();

@@ -7,7 +7,7 @@ namespace PulsGrada.DTOs
         [Required]
         public int IdLokal { get; set; }
 
-        public string KorisnickoIme { get; set; } = string.Empty;
+        public int KorisnickId { get; set; }
 
         [Required]
         [Range(1,5)]

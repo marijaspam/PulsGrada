@@ -1,21 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+
 namespace PulsGrada.Models
 {
-/// <summary>
-/// Predstavlja entitet korisničke recenzije za određeni lokal.
-/// Sadrži brojčanu ocjenu, tekstualni komentar i vremensku oznaku objave.
-/// Mapira se na tablicu 'recenzije' u PostgreSQL bazi podataka.
-/// </summary>
     [Table("recenzije")]
     public class Recenzija
     {
         public int Id { get; set; }
 
-        [ForeignKey("korisnik_id")]
+        [Column("korisnik_id")]
         public int KorisnikId { get; set; }
 
-        [ForeignKey("lokal_id")]
+        [ForeignKey("KorisnikId")]
+        public virtual Korisnik Korisnik { get; set; } = null!;
+
+        [Column("lokal_id")]
         public int LokalId { get; set; }
+
+        [ForeignKey("LokalId")]
+        public virtual Lokal Lokal { get; set; } = null!;
 
         [Column("ocjena")]
         public int Ocjena { get; set; }

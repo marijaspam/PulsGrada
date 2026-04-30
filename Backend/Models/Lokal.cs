@@ -14,16 +14,19 @@ namespace PulsGrada.Models
         [ForeignKey("kvart_id")]
         public int KvartId { get; set; }
 
+        [ForeignKey("KvartId")]
+        public virtual Kvart? Kvart { get; set; }
+
         [Column("naziv")]
         public string Naziv { get; set; } = string.Empty;
 
         [Column("adresa")]
         public string Adresa { get; set; } = string.Empty;
 
-        [Column("lokacija")]
+        [Column("lat")]
         public double KordinataX { get; set; }
 
-        [Column("lokacija")]
+        [Column("lng")]
         public double KordinataY { get; set; }
 
         [Column("radno_vrijeme")]
@@ -49,6 +52,23 @@ namespace PulsGrada.Models
 
         [Column("url_slike")]
         public string UrlSlike { get; set; } = string.Empty;
+
+        [Column("kategorija_id")]
+        public int KategorijaId { get; set; }
+
+        [ForeignKey("KategorijaId")]
+        public virtual Kategorija? Kategorija { get; set; }
+
+        [NotMapped]
+        public double ProsjecnaOcjena
+        {
+            get
+            {
+                if (Recenzije == null || !Recenzije.Any()) return 0;
+                return (double)Recenzije.Average(r => r.Ocjena);
+            }
+        }
+        public virtual ICollection<Recenzija> Recenzije { get; set; } = new List<Recenzija>();
 
     }
 }

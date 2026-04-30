@@ -13,17 +13,19 @@ namespace PulsGrada.Repositories
             _dbcontext = context;
         }
 
-        public List<Lokal> DohvatiFavoriteKorisnika(int idkorisnik)
+        public List<Favorit> DohvatiFavoriteKorisnika(int idkorisnik)
         {
-
-            var idsFavorita = _dbcontext.Favoriti
+            return _dbcontext.Favoriti
+                .Include(f => f.Lokal!)                 
+                .ThenInclude(l => l.Recenzije!)
                 .Where(f => f.KorisnikId == idkorisnik)
-                .Select(f => f.LokalId)
                 .ToList();
+        }
 
-            return _dbcontext.Lokali
-                .Where(l => idsFavorita.Contains(l.Id))
-                .ToList();
+        public Favorit? DohvatiFavorit(int idKorisnika, int idLokala)
+        {
+            return _dbcontext.Favoriti
+                .FirstOrDefault(f => f.KorisnikId == idKorisnika && f.LokalId == idLokala);
         }
 
         public bool DodajFavorit(Favorit favorit)
@@ -38,7 +40,6 @@ namespace PulsGrada.Repositories
             if (vecJeFavorit) return false;
 
             _dbcontext.Favoriti.Add(favorit);
-
             return _dbcontext.SaveChanges() > 0;
         }
 
@@ -48,13 +49,9 @@ namespace PulsGrada.Repositories
                 f.KorisnikId == favorit.KorisnikId &&
                 f.LokalId == favorit.LokalId);
 
-            if (favoritZaUkloniti == null)
-            {
-                return false;
-            }
+            if (favoritZaUkloniti == null) return false;
 
             _dbcontext.Favoriti.Remove(favoritZaUkloniti);
-
             return _dbcontext.SaveChanges() > 0;
         }
     }

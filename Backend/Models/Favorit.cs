@@ -14,5 +14,8 @@ namespace PulsGrada.Models
 
         [Column("lokal_id")]
         public int LokalId { get; set; }
+
+        [ForeignKey("LokalId")]
+        public virtual Lokal? Lokal { get; set; } = null;
     }
 }
