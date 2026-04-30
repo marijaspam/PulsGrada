@@ -53,12 +53,6 @@ namespace PulsGrada.Models
         [Column("url_slike")]
         public string UrlSlike { get; set; } = string.Empty;
 
-        [Column("kategorija_id")]
-        public int KategorijaId { get; set; }
-
-        [ForeignKey("KategorijaId")]
-        public virtual Kategorija? Kategorija { get; set; }
-
         [NotMapped]
         public double ProsjecnaOcjena
         {
