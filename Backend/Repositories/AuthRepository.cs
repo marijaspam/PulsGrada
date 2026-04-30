@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace PulsGrada.Repositories
 {
-    public class KorisnikRepository : IKorisnikRepository
+    public class AuthRepository : IAuthRepository
     {
         private readonly AppDbContext _dbcontext;
 
-        public KorisnikRepository(AppDbContext context)
+        public AuthRepository(AppDbContext context)
         {
             _dbcontext = context;
         }

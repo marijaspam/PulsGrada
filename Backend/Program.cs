@@ -1,3 +1,4 @@
+using PulsGrada.Repositories;
 using PulsGrada.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<ILokalRepository, LokalRepository>();
+builder.Services.AddScoped<IDogadajRepository, DogadajRepository>();
+builder.Services.AddScoped<IFavoritRepository, FavoritRepository>();
+builder.Services.AddScoped<IRecenzijaRepository, RecenzijaRepository>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IKategorijaRepository, KategorijaRepository>();
 
 
 var app = builder.Build();

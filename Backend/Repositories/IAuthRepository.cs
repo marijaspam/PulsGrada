@@ -2,7 +2,7 @@
 
 namespace PulsGrada.Repositories
 {
-    public interface IKorisnikRepository
+    public interface IAuthRepository
     {
         Korisnik? DohvatiPoKorisnickomImenu(string korisnickoIme);
 
