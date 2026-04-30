@@ -3,6 +3,8 @@ using PulsGrada.Data;
 using PulsGrada.Repositories;
 using PulsGrada.Services;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
