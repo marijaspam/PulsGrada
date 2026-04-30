@@ -11,10 +11,10 @@ namespace PulsGrada.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly IKorisnikRepository _korisnikRepo;
+        private readonly IAuthRepository _korisnikRepo;
         private readonly IConfiguration _configuration;
 
-        public AuthService(IKorisnikRepository korisnikRepo, IConfiguration configuration)
+        public AuthService(IAuthRepository korisnikRepo, IConfiguration configuration)
         {
             _korisnikRepo = korisnikRepo;
             _configuration = configuration;
