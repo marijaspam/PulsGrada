@@ -1,0 +1,129 @@
+.hero {
+  text-align: center;
+  padding: 80px 20px 40px 20px;
+}
+
+.naslov { 
+  font-size: 60px; 
+  margin-bottom: 20px; 
+  font-weight: 700;
+}
+
+.glavni-filteri { 
+  display: flex; 
+  justify-content: center; 
+  gap: 40px; 
+  margin-bottom: 10px; 
+}
+
+.filter-glavni-link {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: 0.3s;
+  opacity: 0.6;
+}
+
+.filter-glavni-link:hover {
+  opacity: 1;
+}
+
+.dropdown-filteri {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.dropdown-filteri select {
+  background: rgba(255, 255, 255, 0.1); 
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 20px;
+  min-width: 140px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  text-align: center;
+}
+
+.dropdown-filteri select option {
+  background-color: #1e1b4b; 
+  color: white;
+}
+
+.sekcija {
+  position: relative;
+  padding: 40px 0; 
+}
+
+.sekcija-naslov {
+  width: 100%;
+  max-width: 1400px; 
+  margin: 40px auto 20px auto; 
+  padding: 0 20px; 
+  text-align: left;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.slider-kontejner {
+  display: flex;
+  overflow-x: auto; 
+  gap: 20px;
+  padding: 10px 5% 30px 5%; 
+  scroll-behavior: smooth;
+}
+
+.slider-kontejner .kartica {
+  flex-shrink: 0; 
+  width: 320px;  
+}
+
+.slider-kontejner::-webkit-scrollbar {
+  display: none;
+}
+
+.strelica-slider {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.strelica-slider:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.strelica-slider.lijevo { left: 20px; }
+.strelica-slider.desno { right: 20px; }
+
+.lazna-mapa {
+  width: 90%; 
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 450px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
+}

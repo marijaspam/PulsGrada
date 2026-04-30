@@ -1,0 +1,240 @@
+
+.profil-kontejner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 5%;
+  color: white;
+  min-height: 100vh;
+}
+
+.profil-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.profil-avatar-okvir {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #FF5A7E; 
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 90, 126, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.profil-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.odjava-link {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.odjava-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Sekcije i naslovi */
+.profil-sekcija {
+  margin-bottom: 60px;
+}
+
+.profil-sekcija h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+/* UNIFORMIRANI GUMBI (Spremi i Više) */
+.gumb-spremi, 
+.gumb-vise {
+  background: #FF5A7E;
+  border: none;
+  color: white;
+  padding: 12px 30px; 
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  min-width: 120px; 
+  height: fit-content;
+  transition: 0.3s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gumb-spremi:hover, 
+.gumb-vise:hover {
+  transform: scale(1.05);
+  background: #ff416a;
+}
+
+/* Obavijesti Grid */
+.obavijesti-naslov-red {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.obavijesti-filteri {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.9rem;
+}
+
+.obavijesti-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.obavijest-box {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+}
+
+.obavijest-akcije {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.vise-kontejner {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-top: 10px;
+}
+
+/* Omiljeno (Slider/Red) */
+.profil-omiljeno-red {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.profil-omiljeno-red::-webkit-scrollbar {
+  display: none; 
+}
+
+.profil-kvadrat-kartica {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profil-kvadrat-kartica:hover {
+  transform: scale(1.05);
+}
+
+.profil-kvadrat-kartica img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ostalo */
+.qr-kod-okvir {
+  background: white;
+  padding: 10px;
+  display: inline-block;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.profil-strelica {
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  padding-left: 10px;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.profil-strelica:hover {
+  opacity: 1;
+}
+
+.obavijesti-filteri input[type="checkbox"] {
+  display: none;
+}
+
+.obavijesti-filteri label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+}
+
+.obavijesti-filteri label::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.obavijesti-filteri input[type="checkbox"]:checked + label::before {
+  background-color: #FF5A7E;
+  border-color: #FF5A7E;
+  box-shadow: 0 0 10px rgba(255, 90, 126, 0.4);
+}
+
+.obavijesti-filteri input[type="checkbox"]:checked + label::after {
+  content: "✓";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.obavijesti-filteri label:hover::before {
+  border-color: #FF5A7E;
+  background: rgba(255, 90, 126, 0.1);
+}

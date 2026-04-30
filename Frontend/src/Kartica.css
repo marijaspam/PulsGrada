@@ -1,0 +1,111 @@
+
+.grid-kartica {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.kartica-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: flex; 
+}
+
+.kartica {
+  width: 100%; /* Širinu kontrolira grid, ne fiksni px */
+  min-height: 420px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, background 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kartica:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.kartica-slika-kontejner {
+  width: 100%;
+  height: 230px;
+  background-color: #1a1a2e;
+  overflow: hidden;
+}
+
+.kartica-slika {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.kartica:hover .kartica-slika {
+  transform: scale(1.05);
+}
+
+.kartica-tekst-kontejner {
+  padding: 20px;
+  display: flex;
+  flex-direction: column; 
+  flex-grow: 1;
+  background: rgba(30, 41, 59, 0.85);
+  font-family: 'Montserrat', sans-serif;
+  backdrop-filter: blur(8px);
+}
+
+
+.kartica-info {
+  margin-bottom: 15px;
+}
+
+.kartica-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  min-height: 2.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lokacija-tekst {
+  margin: 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.kartica-donji-red {
+  margin-top: auto; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.vrijeme-tekst {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
+.kartica-srce svg {
+  color: #FF5A7E; 
+  fill: #FF5A7E;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 90, 126, 0.3));
+}
+
+.kartica-srce svg:hover {
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 8px rgba(255, 90, 126, 0.6));
+}

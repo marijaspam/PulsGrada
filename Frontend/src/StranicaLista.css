@@ -1,0 +1,124 @@
+
+.stranica-lista-kontejner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  min-height: 100vh;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.lista-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.lista-glavni-naslov {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.lista-nav-opcije {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.opcija {
+  text-decoration: none;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 500;
+  opacity: 0.5;
+  transition: 0.3s ease;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.opcija:hover, .opcija.aktivno {
+  opacity: 1;
+}
+
+.opcija.aktivno {
+  color: #ff4d6d;
+  border-bottom: 2px solid #ff4d6d;
+}
+
+/* Filteri (Select boxevi) */
+.lista-filteri-red {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.lista-select {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 20px;
+  border-radius: 12px;
+  min-width: 160px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+}
+
+.lista-select:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lista-sadrzaj {
+  display: block !important;
+  width: 100%;
+}
+.kartice-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, 300px) !important; 
+  gap: 30px;
+  justify-content: center;
+  align-items: start;
+  width: 100% !important;
+}
+
+.btn-prikazi-vise {
+  display: block;
+  margin: 60px auto 0 auto;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 16px 45px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+}
+
+.btn-prikazi-vise:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.5);
+  background: #ff3355;
+}
+
+@media (max-width: 768px) {
+  .lista-glavni-naslov {
+    font-size: 2.2rem;
+  }
+  
+  .lista-nav-opcije {
+    gap: 15px;
+  }
+  
+  .opcija {
+    font-size: 1.1rem;
+  }
+}

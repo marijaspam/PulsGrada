@@ -1,16 +1,29 @@
+import { User, Heart, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-function Navbar() {
+function Navbar({ prijavljen }) {
   return (
     <nav className="navbar">
-      <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <h1 className="logo-tekst">PULS GRADA</h1>
-      </Link>
-      <div className="nav-desno">
-        <Link to="/prijava" className="prijava-btn">Prijava</Link>
+      <div className="navbar-logo">
+        <Link to="/" className="logo-link">PULS GRADA</Link>
+      </div>
+
+      <div className="navbar-desno">
+        {prijavljen ? (
+          // Što vidi PRIJAVLJEN (Srce + Profil)
+          <div className="user-icons">
+            <Link to="/omiljeno"><Heart className="nav-ikona" size={24} /></Link>
+            <Link to="/profil"><User className="nav-ikona" size={24} /></Link>
+          </div>
+        ) : (
+          // Što vidi NEPRIJAVLJEN (Gumb Prijava)
+          <Link to="/prijava" className="prijava-btn">PRIJAVA</Link>
+        )}
+                {/* Search bar koji vide SVI */}
         <div className="search-bar">
           <input type="text" placeholder="Pretraži" />
-          <span className="search-icon">O</span>
+          <Search className="search-ikona" size={18} />
         </div>
       </div>
     </nav>
