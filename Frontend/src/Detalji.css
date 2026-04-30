@@ -70,19 +70,28 @@
   color: white;
   border: none;
   padding: 15px 40px;
-  border-radius: 40px;
+  border-radius: 25px;
   font-size: 1.1rem;
   font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s, background-color 0.2s;
+}
+
+.btn-omiljeno:hover {
+  background-color: #ff3355;
+  transform: scale(1.05);
+}
+.srce-ikona-detalji {
+  font-size: 24px;
+  color: #ff4d6d;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.btn-omiljeno:hover {
-  background: #ff758f;
-  transform: scale(1.05);
+.srce-ikona-detalji:hover {
+  transform: scale(1.2);
 }
 
-/* Sekcija s opisom/recenzijama */
 .opis-box, .recenzija-kartica {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);

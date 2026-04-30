@@ -1,9 +1,15 @@
-import './Detalji.css'
+import React, { useState } from 'react';
+import './Detalji.css';
+import { Heart } from 'lucide-react';
 
 function Detalji({ podaci, tip }) {
+  const [isSpremljeno, setIsSpremljeno] = useState(false);
+
+  // Sigurnosna provjera
+  if (!podaci) return <div style={{color: 'white', textAlign: 'center', marginTop: '50px'}}>Učitavanje...</div>;
+
   return (
     <div className="detalji-container">
-      {/* Gornji dio: Info i Glavna slika */}
       <div className="detalji-header">
         <div className="detalji-info-lijevo">
           <h1>
@@ -12,7 +18,7 @@ function Detalji({ podaci, tip }) {
           </h1>
 
           <ul className="info-lista">
-            {podaci.stavke.map((stavka, index) => (
+            {podaci.stavke && podaci.stavke.map((stavka, index) => (
               <li key={index}>
                 <span className="info-ikona">📍</span> {stavka}
               </li>
@@ -32,17 +38,25 @@ function Detalji({ podaci, tip }) {
               title="Google Mapa"
             ></iframe>
           </div>
-        </div> {/* <-- Ovdje je falio ovaj zatvoreni div za lijevu stranu! */}
+        </div>
 
         <div className="glavna-slika-desno">
           <img src={podaci.glavnaSlika} alt={podaci.naslov} />
         </div>
       </div>
 
-      {/* Gumb sekcija */}
       <div className="akcija-sekcija">
-        <button className="btn-omiljeno">DODAJ U OMILJENO</button>
-        <span className="srce-ikona">❤️</span>
+        <button className="btn-omiljeno" onClick={() => setIsSpremljeno(!isSpremljeno)}>
+          {isSpremljeno ? "UKLONI IZ OMILJENIH" : "DODAJ U OMILJENO"}
+        </button>
+        <Heart 
+          className="srce-ikona-detalji" 
+          size={35} 
+          fill={isSpremljeno ? "#ff4d6d" : "none"}
+          color="#ff4d6d"
+          onClick={() => setIsSpremljeno(!isSpremljeno)}
+          style={{cursor: 'pointer'}}
+        />
       </div>
 
       {/* Opis ili Recenzije */}
@@ -55,7 +69,7 @@ function Detalji({ podaci, tip }) {
         ) : (
           <div className="recenzije-sekcija">
             <h3>Recenzije</h3>
-            {podaci.recenzije.map((r, i) => (
+            {podaci.recenzije && podaci.recenzije.map((r, i) => (
               <div key={i} className="recenzija-kartica">
                 <div className="recenzija-header">
                   <strong>{r.ime}</strong> <span>{"⭐".repeat(r.zvijezdice)}</span>
@@ -69,7 +83,7 @@ function Detalji({ podaci, tip }) {
 
       {/* Galerija slika na dnu */}
       <div className="galerija-grid">
-        {podaci.galerija.map((slika, index) => (
+        {podaci.galerija && podaci.galerija.map((slika, index) => (
           <img key={index} src={slika} alt="galerija" className="galerija-slika" />
         ))}
       </div>

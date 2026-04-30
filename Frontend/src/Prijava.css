@@ -1,76 +1,94 @@
-.prijava-stranica {
-  min-height: 80vh;
+.auth-kontejner {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
   color: white;
 }
 
-.prijava-box {
-  width: 100%;
-  max-width: 400px;
+.auth-box h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.auth-forma {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  text-align: center;
+  gap: 20px;
 }
 
 .input-grupa {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.input-grupa label {
-  font-size: 1.2rem;
+  text-align: center; 
+  gap: 8px;
 }
 
 .input-grupa input {
-  background: rgba(255, 255, 255, 0.3); /* Prozirno sivo-plava kao na slici */
-  border: none;
-  padding: 15px 25px;
-  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  border-radius: 25px;
   color: white;
+  text-align: center;
   outline: none;
-  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.input-grupa input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.btn-prijavi {
-  background-color: #ff4d6d; /* Tvoja prepoznatljiva roza */
+.btn-auth {
+  background: #ff4d6d;
   color: white;
   border: none;
   padding: 15px;
-  border-radius: 30px;
+  border-radius: 25px;
   font-weight: bold;
-  font-size: 1.1rem;
   cursor: pointer;
   margin-top: 10px;
   transition: 0.3s;
 }
 
+.btn-auth:hover {
+  background: #ff3355;
+  transform: scale(1.02);
+}
+
+.auth-toggle-tekst {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.auth-toggle-tekst span {
+  color: #ff4d6d;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
 .btn-prijavi:hover {
   background-color: #ff758f;
   transform: scale(1.05);
 }
 
-/* Ovo cilja Link koji ima klasu prijava-btn */
 .prijava-btn {
-  text-decoration: none; /* Miče podcrtavanje */
-  color: white;          /* Force-aj bijelu boju */
-  background-color: #ff4d6d; /* Tvoja roza boja */
+  text-decoration: none; 
+  color: white;
+  background-color: #ff4d6d;
   padding: 10px 20px;
   border-radius: 20px;
   font-weight: bold;
-  display: inline-block; /* Da padding radi kako treba na linku */
+  display: inline-block;
   transition: 0.3s;
 }
 
 .prijava-btn:hover {
   background-color: #ff758f;
-  color: white; /* Da ne poplavi ni kad prođeš mišem */
+  color: white;
   transform: scale(1.05);
 }

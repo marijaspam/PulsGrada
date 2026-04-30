@@ -1,0 +1,104 @@
+
+.stranica-omiljeno {
+  padding: 40px 10%;
+  min-height: 80vh;
+  color: white;
+}
+
+.naslov-stranice {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.grid-kartica {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.stranica-omiljeno .kartica {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease;
+  height: 100%;
+}
+
+.stranica-omiljeno .kartica:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stranica-omiljeno .kartica-slika-kontejner {
+  width: 100%;
+  height: 220px; 
+  overflow: hidden;
+}
+
+.stranica-omiljeno .kartica-slika-kontejner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stranica-omiljeno .info-tekst {
+  padding: 20px 20px 10px 20px;
+  flex-grow: 1; 
+}
+
+.stranica-omiljeno .info-tekst h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+
+  min-height: 2.8rem; 
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.stranica-omiljeno .info-tekst p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  min-height: 3.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.stranica-omiljeno .kartica-info-donji {
+  background: rgba(27, 59, 111, 0.5);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: auto; 
+}
+
+.srce-ikona {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.srce-ikona:hover {
+  transform: scale(1.2);
+}
+
+.btn-detalji {
+  background: #FF5A7E;
+  border: none;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+}

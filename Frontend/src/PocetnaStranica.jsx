@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import Kartica from './Kartica'
+import './Pocetna.css';
 
 function PocetnaStranica() {
 
 const scrollajDesno = (e) => {
-    // e.currentTarget osigurava da uvijek gledamo gumb, bez obzira na što unutar njega kliknuli
     const slider = e.currentTarget.parentElement.querySelector('.slider-kontejner');
     slider.scrollBy({ left: 350, behavior: 'smooth' });
   };

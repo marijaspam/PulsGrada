@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './Kartica.css';
 
 function Kartica({ id, naslov, lokacija, vrijeme, slika }) {
   return (
@@ -8,7 +9,6 @@ function Kartica({ id, naslov, lokacija, vrijeme, slika }) {
           className="kartica-slika" 
           style={{ backgroundImage: `url(${slika})` }}
         >
-          {/* Slika je gore, srce ide u donji dio */}
         </div>
         <div className="kartica-tekst-kontejner">
           <div className="kartica-info">
