@@ -54,7 +54,6 @@ namespace PulsGrada.Models
         [Column("url_slika")]
         public string UrlSlike { get; set; } = string.Empty;
 
-
         [NotMapped]
         public double ProsjecnaOcjena
         {
