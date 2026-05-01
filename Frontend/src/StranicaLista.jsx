@@ -1,73 +1,169 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import Kartica from './Kartica'
 import './StranicaLista.css'
 
 function StranicaLista({ naslov, tip }) {
-  const dogadajiPodaci = [
-    { id: 1, naslov: "Taking the Trash out", lokacija: "Zagrebački velesajam", vrijeme: "23:00 h" },
-    { id: 2, naslov: "Opća verzija", lokacija: "ZAGS caffe", vrijeme: "20:00 h" },
-    { id: 3, naslov: "Aleksandar Lazić", lokacija: "Cristero pub", vrijeme: "20:00 h" },
-    { id: 4, naslov: "Beer pong", lokacija: "Mala kavana", vrijeme: "21:00 h" },
-    { id: 5, naslov: "Tamburaši", lokacija: "The Place", vrijeme: "19:00 h" },
-    { id: 6, naslov: "Ex Zodiac band", lokacija: "River pub", vrijeme: "21:00 h" },
-  ];
+  const [podaci, setPodaci] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const kaficiPodaci = [
-    { id: 7, naslov: "Caffe Bar Puls", lokacija: "Centar", vrijeme: "07:00 - 23:00" },
-    { id: 8, naslov: "Johann Franck", lokacija: "Trg bana Jelačića", vrijeme: "08:00 - 02:00" },
-    { id: 9, naslov: "History Village", lokacija: "Tkalčićeva", vrijeme: "09:00 - 00:00" },
-  ];
+  const [kvartovi, setKvartovi] = useState([])
+  const [kategorije, setKategorije] = useState([])
 
-  const trenutniPodaci = tip === 'dogadaji' ? dogadajiPodaci : kaficiPodaci;
+  const [odabraniKvartId, setOdabraniKvartId] = useState('')
+  const [odabranaKategorija, setOdabranaKategorija] = useState('')
+  const [odabranoVrijeme, setOdabranoVrijeme] = useState('')
+
+  const base = 'http://localhost:5018/api'
+
+  useEffect(() => {
+    const dohvatiFilterOpcije = async () => {
+      try {
+        const [resKvartovi, resKategorije] = await Promise.all([
+          axios.get(`${base}/Kvart`),
+          axios.get(`${base}/Kategorija`)
+        ])
+
+        setKvartovi(resKvartovi.data)
+        setKategorije(resKategorije.data)
+      } catch (err) {
+        console.error('Greška pri dohvaćanju kvartova/kategorija:', err)
+      }
+    }
+
+    dohvatiFilterOpcije()
+  }, [])
+
+  useEffect(() => {
+    const dohvatiPodatke = async () => {
+      setLoading(true)
+
+      try {
+        const url =
+          tip === 'dogadaji'
+            ? `${base}/Dogadaj/filter`
+            : `${base}/Lokal/filter`
+
+        const params =
+          tip === 'dogadaji'
+            ? {
+                idKvart: odabraniKvartId || undefined,
+                kategorija: odabranaKategorija || undefined,
+                vrijeme: odabranoVrijeme || undefined
+              }
+            : {
+                idKvart: odabraniKvartId || undefined
+              }
+        
+        console.log('URL:', url)
+        console.log('PARAMS:', params)
+
+        const res = await axios.get(url, { params })
+        setPodaci(res.data)
+      } catch (err) {
+        console.error('Greška pri filtriranju:', err)
+        setPodaci([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    dohvatiPodatke()
+  }, [tip, odabraniKvartId, odabranaKategorija, odabranoVrijeme])
 
   return (
     <div className="stranica-lista-kontejner">
       <header className="lista-header">
         <h1 className="lista-glavni-naslov">{naslov}</h1>
-        
+
         <div className="lista-nav-opcije">
-          <Link 
-            to="/dogadaji" 
+          <Link
+            to="/dogadaji"
             className={tip === 'dogadaji' ? 'opcija aktivno' : 'opcija'}
           >
             Događaji
           </Link>
-          <Link 
-            to="/kafici" 
+
+          <Link
+            to="/kafici"
             className={tip === 'kafici' ? 'opcija aktivno' : 'opcija'}
           >
             Kafići
           </Link>
         </div>
-        
+
         <div className="lista-filteri-red">
-          {tip === 'dogadaji' ? (
+          <select
+            className="lista-select"
+            value={odabraniKvartId}
+            onChange={(e) => setOdabraniKvartId(e.target.value)}
+          >
+            <option value="">Svi kvartovi</option>
+
+            {kvartovi.map((kvart) => (
+              <option key={kvart.id} value={kvart.id}>
+                {kvart.naziv}
+              </option>
+            ))}
+          </select>
+
+          {tip === 'dogadaji' && (
             <>
-              <select className="lista-select"><option>Vrijeme</option></select>
-              <select className="lista-select"><option>Vrsta događaja</option></select>
-              <select className="lista-select"><option>Karta</option></select>
+              <select
+                className="lista-select"
+                value={odabranaKategorija}
+                onChange={(e) => setOdabranaKategorija(e.target.value)}
+              >
+                <option value="">Sve kategorije</option>
+
+                {kategorije.map((kategorija) => (
+                  <option key={kategorija.id} value={kategorija.naziv}>
+                    {kategorija.naziv}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                className="lista-select"
+                value={odabranoVrijeme}
+                onChange={(e) => setOdabranoVrijeme(e.target.value)}
+              >
+                <option value="">Bilo kada</option>
+                <option value={new Date().toISOString().split('T')[0]}>
+                  Danas
+                </option>
+              </select>
             </>
-          ) : (
-            <select className="lista-select"><option>Karta</option></select>
           )}
-          <button className="filter-ikona-gumb">--</button>
         </div>
       </header>
 
       <main className="lista-sadrzaj">
-        <div className="kartice-grid">
-          {/* MAP metoda koja generira kartice iz nizova iznad */}
-          {trenutniPodaci.map((stavka) => (
-            <Kartica 
-              key={stavka.id} 
-              naslov={stavka.naslov} 
-              lokacija={stavka.lokacija} 
-              vrijeme={stavka.vrijeme} 
-            />
-          ))}
-        </div>
-        
-        <button className="btn-prikazi-vise">PRIKAŽI VIŠE</button>
+        {loading ? (
+          <h2 style={{ color: 'white', textAlign: 'center' }}>Tražim...</h2>
+        ) : (
+          <div className="kartice-grid">
+            {podaci && podaci.length > 0 ? (
+              podaci.map((stavka) => (
+                <Kartica
+                  key={stavka.id || stavka.idDogadaj || stavka.idLokal}
+                  {...stavka}
+                />
+              ))
+            ) : (
+              <p
+                style={{
+                  color: 'white',
+                  gridColumn: '1/-1',
+                  textAlign: 'center'
+                }}
+              >
+                Nema rezultata za tvoju pretragu.
+              </p>
+            )}
+          </div>
+        )}
       </main>
     </div>
   )

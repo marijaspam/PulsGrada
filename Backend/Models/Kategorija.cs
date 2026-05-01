@@ -9,6 +9,7 @@ namespace PulsGrada.Models
     [Table("kategorije")]
     public class Kategorija
     {
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("naziv")]

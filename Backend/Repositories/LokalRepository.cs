@@ -15,12 +15,16 @@ namespace PulsGrada.Repositories
 
         public List<Lokal> DohvatiSveLokale()
         {
-            return _dbcontext.Lokali.ToList();
+            return _dbcontext.Lokali
+                .Include(l => l.Kvart) 
+                .ToList();
         }
 
         public Lokal? DohvatiPojediniLokal(int id)
         {
-            return _dbcontext.Lokali.FirstOrDefault(l => l.Id == id);
+            return _dbcontext.Lokali
+                .Include(l => l.Kvart)
+                .FirstOrDefault(l => l.Id == id);
         }
 
         public List<Lokal> PretraziLokale(string uneseniPojam)
@@ -30,15 +34,21 @@ namespace PulsGrada.Repositories
                 return new List<Lokal>();
             }
 
+            var pojam = uneseniPojam.ToLower();
+
             return _dbcontext.Lokali
-                .Where(l => l.Naziv.ToLower().Contains(uneseniPojam.ToLower()) ||
-                            l.Opis.ToLower().Contains(uneseniPojam.ToLower()))
+                .Include(l => l.Kvart)
+                .Where(l => l.Naziv.ToLower().Contains(pojam) ||
+                            (l.Opis != null && l.Opis.ToLower().Contains(pojam)))
                 .ToList();
         }
 
         public List<Lokal> DohvatiPremiumLokale()
         {
-            return _dbcontext.Lokali.Where(l => l.IsPremium).ToList();
+            return _dbcontext.Lokali
+                .Include(l => l.Kvart)
+                .Where(l => l.IsPremium)
+                .ToList();
         }
 
         public List<Lokal> FilterLokala(
@@ -48,8 +58,9 @@ namespace PulsGrada.Repositories
             bool? imaPikado,
             int? idKvart)
         {
-
-            var upit = _dbcontext.Lokali.AsQueryable();
+            var upit = _dbcontext.Lokali
+                .Include(l => l.Kvart)
+                .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(adresa))
             {

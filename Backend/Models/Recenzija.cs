@@ -5,6 +5,7 @@ namespace PulsGrada.Models
     [Table("recenzije")]
     public class Recenzija
     {
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("korisnik_id")]

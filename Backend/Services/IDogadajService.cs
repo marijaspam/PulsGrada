@@ -9,7 +9,7 @@ namespace PulsGrada.Services
         List<DogadajInfoDto> DohvatiDogadajeULokalu(int idLokala);
         List<DogadajInfoDto> PretraziDogadaje(string uneseniPojam);
         List<DogadajInfoDto> FiltrirajDogadaje(
-            string? naziv,
+            int? idKvart,
             string? kategorija,
             DateTime? vrijemePocetka
             );

@@ -8,6 +8,7 @@ namespace PulsGrada.Models
     [Table("korisnici")]
     public class Korisnik
     {
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("korisnicko_ime")]
@@ -22,7 +23,7 @@ namespace PulsGrada.Models
         [Column("email")]
         public string Email { get; set; } = string.Empty;
 
-        [Column("lozinka")]
+        [Column("lozinka_hash")]
         public string Lozinka { get; set; } = string.Empty;
 
         [Column("datum_registracije")]

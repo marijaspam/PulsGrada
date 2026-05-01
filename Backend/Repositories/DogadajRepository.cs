@@ -15,17 +15,30 @@ namespace PulsGrada.Repositories
 
         public List<Dogadaj> DohvatiSveDogadaje()
         {
-            return _dbContext.Dogadaji.ToList();
+            return _dbContext.Dogadaji
+                .Include(d => d.Lokal)
+                .Include(d => d.Organizator)
+                .Include(d => d.Kategorija)
+                .ToList();
         }
 
         public Dogadaj? DohvatiPojediniDogadaj(int id)
         {
-            return _dbContext.Dogadaji.FirstOrDefault(d => d.Id == id);
+            return _dbContext.Dogadaji
+                .Include(d => d.Lokal)
+                .Include(d => d.Organizator)
+                .Include(d => d.Kategorija)
+                .FirstOrDefault(d => d.Id == id);
         }
 
         public List<Dogadaj> DohvatiDogadajeULokalu(int idLokala)
         {
-            return _dbContext.Dogadaji.Where(d => d.LokalId == idLokala).ToList();
+            return _dbContext.Dogadaji
+            .Include(d => d.Lokal)
+            .Include(d => d.Organizator)
+            .Include(d => d.Kategorija)
+            .Where(d => d.LokalId == idLokala)
+            .ToList();
         }
 
         public List<Dogadaj> PretraziDogadaje(string uneseniPojam)
@@ -35,21 +48,28 @@ namespace PulsGrada.Repositories
             var pojam = uneseniPojam.ToLower();
 
             return _dbContext.Dogadaji
+                .Include(d => d.Lokal)
+                .Include(d => d.Organizator) 
+                .Include(d => d.Kategorija)  
                 .Where(d => d.Naziv.ToLower().Contains(pojam) ||
                             d.Opis.ToLower().Contains(pojam))
                 .ToList();
         }
 
         public List<Dogadaj> FiltrirajDogadaje(
-            string? naziv,
+            int? idKvart,
             int? kategorijaId, 
             DateTime? vrijemePocetka)
         {
-            var upit = _dbContext.Dogadaji.AsQueryable();
+            var upit = _dbContext.Dogadaji
+            .Include(d => d.Lokal)
+            .Include(d => d.Organizator)
+            .Include(d => d.Kategorija)
+            .AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(naziv))
+            if (idKvart.HasValue)
             {
-                upit = upit.Where(d => d.Naziv.ToLower().Contains(naziv.ToLower()));
+                upit = upit.Where(d => d.Lokal != null && d.Lokal.KvartId == idKvart.Value);
             }
 
             if (kategorijaId.HasValue)

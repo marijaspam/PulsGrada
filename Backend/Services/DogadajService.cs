@@ -45,13 +45,13 @@ namespace PulsGrada.Services
                 .ToList();
         }
 
-        public List<DogadajInfoDto> FiltrirajDogadaje(string? naziv, string? kategorija, DateTime? vrijemePocetka)
+        public List<DogadajInfoDto> FiltrirajDogadaje(int? idKvart, string? kategorija, DateTime? vrijemePocetka)
         {
             var dogadajiQuery = _dogadajRepo.DohvatiSveDogadaje().AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(naziv))
+            if (idKvart.HasValue)
             {
-                dogadajiQuery = dogadajiQuery.Where(d => d.Naziv.Contains(naziv, StringComparison.OrdinalIgnoreCase));
+                dogadajiQuery = dogadajiQuery.Where(d => d.Lokal != null && d.Lokal.KvartId == idKvart.Value);
             }
 
             if (!string.IsNullOrWhiteSpace(kategorija))

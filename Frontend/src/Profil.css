@@ -27,6 +27,11 @@
   justify-content: center;
   background: rgba(255, 255, 255, 0.05);
 }
+.profil-avatar-slovo {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FF5A7E;
+}
 
 .profil-img {
   width: 100%;

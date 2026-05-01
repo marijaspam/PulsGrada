@@ -1,4 +1,3 @@
-
 .grid-kartica {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -9,11 +8,11 @@
 .kartica-link-wrapper {
   text-decoration: none;
   color: inherit;
-  display: flex; 
+  display: flex;
 }
 
 .kartica {
-  width: 100%; /* Širinu kontrolira grid, ne fiksni px */
+  width: 100%;
   min-height: 420px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 24px;
@@ -38,9 +37,12 @@
 
 .kartica-slika {
   width: 100%;
-  height: 100%;
+  height: 230px;
   object-fit: cover;
   transition: transform 0.5s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .kartica:hover .kartica-slika {
@@ -50,20 +52,22 @@
 .kartica-tekst-kontejner {
   padding: 20px;
   display: flex;
-  flex-direction: column; 
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
   flex-grow: 1;
   background: rgba(30, 41, 59, 0.85);
   font-family: 'Montserrat', sans-serif;
   backdrop-filter: blur(8px);
 }
 
-
 .kartica-info {
-  margin-bottom: 15px;
+  flex: 1;
+  min-width: 0;
 }
 
 .kartica-info h4 {
-  margin: 0 0 5px 0;
+  margin: 0 0 14px 0;
   font-size: 1.15rem;
   font-weight: 600;
   color: #ffffff;
@@ -81,31 +85,27 @@
   font-size: 0.95rem;
 }
 
-.kartica-donji-red {
-  margin-top: auto; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-}
-
 .vrijeme-tekst {
-  margin: 0;
+  margin: 3px 0 0 0;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
-
-.kartica-srce svg {
-  color: #FF5A7E; 
-  fill: #FF5A7E;
+.kartica-srce {
+  background: transparent;
+  border: none;
+  color: #ff4f7b;
   cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 0 5px rgba(255, 90, 126, 0.3));
+  padding: 0;
+  margin-top: 2px;
+  flex-shrink: 0;
 }
 
-.kartica-srce svg:hover {
-  transform: scale(1.25);
-  filter: drop-shadow(0 0 8px rgba(255, 90, 126, 0.6));
+.kartica-srce:hover {
+  transform: scale(1.15);
+}
+
+.kartica-srce.aktivno svg {
+  fill: currentColor;
 }

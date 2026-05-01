@@ -5,6 +5,7 @@ namespace PulsGrada.Models
     [Table("dogadaji")]
     public class Dogadaj
     {
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("lokal_id")]

@@ -1,38 +1,85 @@
-import React from 'react';
-import { Heart } from 'lucide-react';
-import { fejkBaza } from './baza';
-import './Omiljeno.css';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import Kartica from './Kartica'
+import './Omiljeno.css'
 
 function Omiljeno() {
-  const omiljeniPredmeti = Object.values(fejkBaza).slice(0, 5);
+  const [favoriti, setFavoriti] = useState([])
+  const [loading, setLoading] = useState(true)
+  const obrisiFavorit = async (lokalId) => {
+  const user = JSON.parse(localStorage.getItem('user'))
+  const korisnikId = user.idKorisnik || user.korisnikId || user.id
+
+  try {
+    await axios.delete('http://localhost:5018/api/Favorit/obrisi', {
+      data: {
+        korisnikId: korisnikId,
+        lokalId: lokalId
+      }
+    })
+
+    setFavoriti(favoriti.filter((f) => 
+      (f.id || f.lokalId || f.idLokal) !== lokalId
+    ))
+
+  } catch (err) {
+    console.error('Greška pri brisanju favorita:', err)
+  }
+}
+
+  useEffect(() => {
+    const dohvatiFavorite = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem('user'))
+
+        if (!user) {
+          setFavoriti([])
+          setLoading(false)
+          return
+        }
+
+        const korisnikId = user.idKorisnik || user.korisnikId || user.id
+
+        const res = await axios.get(`http://localhost:5018/api/Favorit/${korisnikId}`)
+
+        console.log('FAVORITI:', res.data)
+
+        setFavoriti(res.data)
+      } catch (err) {
+        console.error('Greška pri dohvaćanju favorita:', err)
+        setFavoriti([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    dohvatiFavorite()
+  }, [])
 
   return (
     <div className="stranica-omiljeno">
       <h1 className="naslov-stranice">Omiljeno</h1>
-      
+
       <div className="grid-kartica">
-        {omiljeniPredmeti.map((stavka, index) => (
-          <div key={index} className="kartica">
-            <div className="kartica-slika-kontejner">
-                <img src={stavka.slika} alt={stavka.naslov} className="kartica-slika" />
-            </div>
-            
-            <div className="kartica-info-donji">
-            <div className="info-tekst">
-                <h3>{stavka.naslov}</h3>
-                <p className="opis">{stavka.opis || stavka.adresa}</p>
-                <p className="lokacija">{stavka.lokacija || stavka.grad}</p>
-            </div>
-              
-              <div className="srce-ikona">
-                <Heart fill="#FF5A7E" color="#FF5A7E" size={24} />
-              </div>
-            </div>
-          </div>
-        ))}
+        {loading ? (
+          <p style={{ color: 'white', gridColumn: '1 / -1' }}>
+            Učitavam omiljeno...
+          </p>
+        ) : favoriti.length > 0 ? (
+          favoriti.map((stavka) => (
+            <Kartica
+              key={stavka.id || stavka.lokalId || stavka.idLokal}
+              {...stavka}
+            />
+          ))
+        ) : (
+          <p style={{ color: 'white', gridColumn: '1 / -1' }}>
+            Još nemaš omiljenih kafića.
+          </p>
+        )}
       </div>
     </div>
-  );
+  )
 }
 
-export default Omiljeno;
+export default Omiljeno

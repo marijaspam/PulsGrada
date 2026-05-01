@@ -9,9 +9,10 @@ namespace PulsGrada.Models
     [Table("lokali")]
     public class Lokal
     {
+        [Column("id")]
         public int Id { get; set; }
 
-        [ForeignKey("kvart_id")]
+        [Column("kvart_id")]
         public int KvartId { get; set; }
 
         [ForeignKey("KvartId")]
@@ -30,10 +31,10 @@ namespace PulsGrada.Models
         public double KordinataY { get; set; }
 
         [Column("radno_vrijeme")]
-        public string RadnoVrijeme { get; set; } = string.Empty;
+        public string RadnoVrijeme { get; set; }
 
         [Column("opis")]
-        public string Opis { get; set; } = string.Empty;
+        public string? Opis { get; set; } = string.Empty;
 
         [Column("ima_pusenje")]
         public bool ImaPusenje { get; set; }
@@ -45,19 +46,14 @@ namespace PulsGrada.Models
         public bool ImaPikado { get; set; }
 
         [Column("url_cjenik")]
-        public string UrlCjenik { get; set; } = string.Empty;
+        public string? UrlCjenik { get; set; }
 
         [Column("is_premium")]
         public bool IsPremium { get; set; }
 
-        [Column("url_slike")]
+        [Column("url_slika")]
         public string UrlSlike { get; set; } = string.Empty;
 
-        [Column("kategorija_id")]
-        public int KategorijaId { get; set; }
-
-        [ForeignKey("KategorijaId")]
-        public virtual Kategorija? Kategorija { get; set; }
 
         [NotMapped]
         public double ProsjecnaOcjena

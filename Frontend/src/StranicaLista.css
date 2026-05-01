@@ -58,22 +58,26 @@
 }
 
 .lista-select {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 20px;
-  border-radius: 12px;
-  min-width: 160px;
-  font-family: 'Montserrat', sans-serif;
-  cursor: pointer;
-  outline: none;
-  transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    appearance: none; 
+}
+
+.lista-select option {
+    background-color: #2c0b3a; 
+    color: white;
 }
 
 .lista-select:hover {
   background: rgba(255, 255, 255, 0.25);
 }
+
 
 .lista-sadrzaj {
   display: block !important;

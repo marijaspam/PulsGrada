@@ -1,6 +1,6 @@
 ﻿using PulsGrada.Data;
 using PulsGrada.Models;
-using PulsGrada.Services;
+using Microsoft.EntityFrameworkCore; 
 
 namespace PulsGrada.Repositories
 {
@@ -16,7 +16,9 @@ namespace PulsGrada.Repositories
         public List<Recenzija> DohvatiRecenzijeZaLokal(int idLokal)
         {
             return _dbcontext.Recenzije
+                .Include(r => r.Korisnik) 
                 .Where(r => r.LokalId == idLokal)
+                .OrderByDescending(r => r.DatumObjave) 
                 .ToList();
         }
 

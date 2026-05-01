@@ -30,12 +30,12 @@ namespace PulsGrada.Controllers
         }
         [HttpGet("filter")]
         public IActionResult FiltrirajDogadaje(
-            [FromQuery] string? naziv,
+            [FromQuery] int? idKvart,
             [FromQuery] string? kategorija,
             [FromQuery] DateTime? vrijeme
             )
         {
-            var rezultatiDogadaji = _dogadajService.FiltrirajDogadaje(naziv, kategorija, vrijeme);
+            var rezultatiDogadaji = _dogadajService.FiltrirajDogadaje(idKvart, kategorija, vrijeme);
             if(rezultatiDogadaji == null)
             {
                 return NotFound(new { poruka = "Nije pronaden takav dogadaj" });

@@ -1,6 +1,9 @@
-import { User, Heart, Search } from 'lucide-react';
+import { User, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+
+const HeartIcon = (props) => <Heart {...props} />;
+const UserIcon = (props) => <User {...props} />;
 
 function Navbar({ prijavljen }) {
   return (
@@ -11,19 +14,23 @@ function Navbar({ prijavljen }) {
 
       <div className="navbar-desno">
         {prijavljen ? (
-          // Što vidi PRIJAVLJEN (Srce + Profil)
+          /* Što vidi PRIJAVLJEN (Srce + Profil) */
           <div className="user-icons">
-            <Link to="/omiljeno"><Heart className="nav-ikona" size={24} /></Link>
-            <Link to="/profil"><User className="nav-ikona" size={24} /></Link>
+            <Link to="/omiljeno" className="nav-ikona-link">
+              Omiljeno
+            </Link>
+            <Link to="/profil" className="nav-ikona-link">
+              Profil
+            </Link>
           </div>
         ) : (
-          // Što vidi NEPRIJAVLJEN (Gumb Prijava)
+          /* Što vidi NEPRIJAVLJEN (Gumb Prijava) */
           <Link to="/prijava" className="prijava-btn">PRIJAVA</Link>
         )}
-                {/* Search bar koji vide SVI */}
+
+        {/* Search bar BEZ ikone */}
         <div className="search-bar">
-          <input type="text" placeholder="Pretraži" />
-          <Search className="search-ikona" size={18} />
+          <input type="text" placeholder="Pretraži..." />
         </div>
       </div>
     </nav>

@@ -9,6 +9,7 @@ namespace PulsGrada.Models
     [Table("organizatori")]
     public class Organizator
     {
+        [Column("id")]
         public int Id {get; set;}
 
         [Column("naziv")]
@@ -17,7 +18,7 @@ namespace PulsGrada.Models
         [Column("opis")]
         public string Opis{ get; set; } = string.Empty;
 
-        [Column("Kontakt_email")]
+        [Column("kontakt_email")]
         public string KontaktEmail { get; set; } = string.Empty;
     }
 }

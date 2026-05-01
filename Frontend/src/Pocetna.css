@@ -34,27 +34,33 @@
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .dropdown-filteri select {
-  background: rgba(255, 255, 255, 0.1); 
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 10px 20px;
   border-radius: 20px;
-  min-width: 140px;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
   outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  appearance: none;
+  min-width: 150px;
   text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.dropdown-filteri select:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .dropdown-filteri select option {
-  background-color: #1e1b4b; 
+  background-color: #2c0b3a;
   color: white;
 }
-
 .sekcija {
   position: relative;
   padding: 40px 0; 
