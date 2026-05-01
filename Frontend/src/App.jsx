@@ -11,7 +11,6 @@ import Profil from './Profil'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-// --- POMOĆNA KOMPONENTA ZA DETALJE ---
 function DetaljiWrapper() {
   const { id } = useParams()
   const [podaci, setPodaci] = useState(null)

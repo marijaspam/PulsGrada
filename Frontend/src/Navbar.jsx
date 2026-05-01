@@ -27,8 +27,7 @@ function Navbar({ prijavljen }) {
           /* Što vidi NEPRIJAVLJEN (Gumb Prijava) */
           <Link to="/prijava" className="prijava-btn">PRIJAVA</Link>
         )}
-
-        {/* Search bar BEZ ikone */}
+        
         <div className="search-bar">
           <input type="text" placeholder="Pretraži..." />
         </div>
