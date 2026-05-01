@@ -66,12 +66,17 @@ function Omiljeno() {
             Učitavam omiljeno...
           </p>
         ) : favoriti.length > 0 ? (
-          favoriti.map((stavka) => (
-            <Kartica
-              key={stavka.id || stavka.lokalId || stavka.idLokal}
-              {...stavka}
-            />
-          ))
+          favoriti.map((stavka) => {
+            const lokalId = stavka.id || stavka.lokalId || stavka.idLokal
+            return (
+            <Kartica key={lokalId} {...stavka} pocetnoOmiljeno={true} 
+            onMakniIzOmiljenog={(idZaMaknuti) => setFavoriti(favoriti.filter((f) => {
+              const idFavorita = f.id || f.lokalId || f.idLokal
+              return idFavorita !== idZaMaknuti
+            }))
+          }
+          />)
+        })
         ) : (
           <p style={{ color: 'white', gridColumn: '1 / -1' }}>
             Još nemaš omiljenih kafića.

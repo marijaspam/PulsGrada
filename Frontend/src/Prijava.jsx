@@ -2,18 +2,20 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './Prijava.css'
 
-function Prijava({onLogin}) {
+function Prijava({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true)
 
-  const [formData, setFormData] = useState({
+  const praznaForma = {
     korisnickoIme: '',
     ime: '',
     prezime: '',
     email: '',
     lozinka: '',
     ponovljenaLozinka: '',
-    korisnikIdentifikator: '',
-  })
+    korisnikIdentifikator: ''
+  }
+
+  const [formData, setFormData] = useState(praznaForma)
 
   const base = 'http://localhost:5018/api'
 
@@ -24,33 +26,33 @@ function Prijava({onLogin}) {
     })
   }
 
+  const prebaciFormu = () => {
+    setFormData(praznaForma)
+    setIsLogin(!isLogin)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
       if (isLogin) {
-        // LOGIN
         const res = await axios.post(`${base}/Auth/prijava`, {
           korisnikIdentifikator: formData.korisnikIdentifikator,
           lozinka: formData.lozinka
         })
 
-        console.log('LOGIN USPJEH:', res.data)
-
-        alert('Uspješna prijava!')
         localStorage.setItem('user', JSON.stringify(res.data))
-        if(onLogin) onLogin()
+
+        if (onLogin) onLogin()
+
         window.location.href = '/'
-
       } else {
-        // REGISTRACIJA
-
         if (formData.lozinka !== formData.ponovljenaLozinka) {
           alert('Lozinke se ne poklapaju!')
           return
         }
 
-        const res = await axios.post(`${base}/Auth/registracija`, {
+        await axios.post(`${base}/Auth/registracija`, {
           korisnickoIme: formData.korisnickoIme,
           ime: formData.ime,
           prezime: formData.prezime,
@@ -59,15 +61,14 @@ function Prijava({onLogin}) {
           ponovljenaLozinka: formData.ponovljenaLozinka
         })
 
-        console.log('REGISTRACIJA USPJEH:', res.data)
-
         alert('Registracija uspješna! Možeš se prijaviti.')
-        setIsLogin(true)
 
+        setFormData(praznaForma)
+        setIsLogin(true)
       }
     } catch (err) {
       console.error('Greška:', err)
-      alert('Nešto nije u redu (provjeri podatke)')
+      alert('Nešto nije u redu. Provjeri podatke.')
     }
   }
 
@@ -76,8 +77,11 @@ function Prijava({onLogin}) {
       <div className="auth-box">
         <h2>{isLogin ? 'Prijava' : 'Registracija'}</h2>
 
-        <form className="auth-forma" onSubmit={handleSubmit}>
-
+        <form
+          className="auth-forma"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
           {!isLogin && (
             <>
               <div className="input-grupa">
@@ -85,7 +89,9 @@ function Prijava({onLogin}) {
                 <input
                   type="text"
                   name="korisnickoIme"
+                  value={formData.korisnickoIme}
                   onChange={handleChange}
+                  autoComplete="off"
                 />
               </div>
 
@@ -94,7 +100,9 @@ function Prijava({onLogin}) {
                 <input
                   type="text"
                   name="ime"
+                  value={formData.ime}
                   onChange={handleChange}
+                  autoComplete="off"
                 />
               </div>
 
@@ -103,19 +111,23 @@ function Prijava({onLogin}) {
                 <input
                   type="text"
                   name="prezime"
+                  value={formData.prezime}
                   onChange={handleChange}
+                  autoComplete="off"
                 />
               </div>
             </>
           )}
 
           <div className="input-grupa">
-            <label>Email ili korisničko ime</label>
+            <label>{isLogin ? 'Email ili korisničko ime:' : 'Email:'}</label>
             <input
-              type="text"
-              name="korisnikIdentifikator"
-              placeholder='email ili korisničko ime'
+              type={isLogin ? 'text' : 'email'}
+              name={isLogin ? 'korisnikIdentifikator' : 'email'}
+              placeholder={isLogin ? 'email ili korisničko ime' : 'email'}
+              value={isLogin ? formData.korisnikIdentifikator : formData.email}
               onChange={handleChange}
+              autoComplete="off"
             />
           </div>
 
@@ -124,7 +136,9 @@ function Prijava({onLogin}) {
             <input
               type="password"
               name="lozinka"
+              value={formData.lozinka}
               onChange={handleChange}
+              autoComplete="new-password"
             />
           </div>
 
@@ -134,7 +148,9 @@ function Prijava({onLogin}) {
               <input
                 type="password"
                 name="ponovljenaLozinka"
+                value={formData.ponovljenaLozinka}
                 onChange={handleChange}
+                autoComplete="new-password"
               />
             </div>
           )}
@@ -145,8 +161,8 @@ function Prijava({onLogin}) {
         </form>
 
         <p className="auth-toggle-tekst">
-          {isLogin ? "Nemaš račun?" : "Već imaš račun?"}
-          <span onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? 'Nemaš račun?' : 'Već imaš račun?'}
+          <span onClick={prebaciFormu}>
             {isLogin ? ' Registriraj se' : ' Prijavi se'}
           </span>
         </p>

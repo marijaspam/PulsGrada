@@ -121,10 +121,6 @@ function PocetnaStranica() {
               Danas
             </option>
           </select>
-
-          <button className="filter-icon" type="button">
-            /\
-          </button>
         </div>
       </header>
 
@@ -184,8 +180,19 @@ function PocetnaStranica() {
       </section>
 
       <section className="mapa-sekcija">
-        <h2 className="sekcija-naslov">Krvotok grada</h2>
-        <div className="lazna-mapa">Ovdje ide Google Maps</div>
+        <h2 className="sekcija-naslov">Krvotok grada</h2>   
+        <div className="google-mapa-okvir">
+          <iframe
+          title="Google mapa Zagreba"
+          src="https://www.google.com/maps?q=Zagreb&output=embed"
+          width="100%"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </section>
     </>
   )

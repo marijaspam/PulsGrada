@@ -22,9 +22,14 @@ body {
   color: white;
 }
 
+html, body, #root {
+  height: 100%;
+}
+
 .glavni-kontejner {
   min-height: 100vh;
-  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
